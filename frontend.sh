@@ -1,6 +1,15 @@
 #!/bin/bash
 component="frontend"
 logfile= "/tmp/$component.log"
+# Check if the script is being run as root (UID 0)
+   if [ "$(id -u)" -eq "0" ]; then
+       echo "Running as root..."
+
+   else
+       echo "Not running as root. Exiting..."
+       exit 1  # Exit the script with a non-zero exit code
+       echo -e "\n For example: \t \t run as \e[35m sudo bash $0 \e[0m"
+   fi
 stat(){
     if [ $1 -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
