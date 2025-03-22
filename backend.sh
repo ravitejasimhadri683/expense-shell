@@ -43,4 +43,8 @@ cd /app
 unzip -o /tmp/backend.zip &>> logfile
 stat $?
 
+echo -n "npm installation: "
+npm install &>> logfile
+stat $?
+
 
