@@ -43,8 +43,17 @@ cd /app
 unzip -o /tmp/backend.zip &>> logfile
 stat $?
 
-echo -n "npm installation: "
+echo -n "Generating the $component artifacts: "
 npm install &>> logfile
 stat $?
+
+echo -n "Configuring the permission: "
+chmod -R 775 /app && chown -R expense:expense /app 
+stat $?
+
+echo -n "Configuring the system services: "
+cp $component.service /etc/systemd/system/$component.service
+stat $?
+
 
 
