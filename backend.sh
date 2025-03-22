@@ -38,6 +38,10 @@ echo -n "Download the application to create the app directory: "
 curl -o /tmp/backend.zip https://expense-web-app.s3.amazonaws.com/$component.zip  &>> logfile
 stat $?
 
+echo -n "Configuring the system services: "
+cp $component.service /etc/systemd/system/$component.service
+stat $?
+
 echo -n "Extracting the $component content "
 cd /app
 unzip -o /tmp/backend.zip &>> logfile
@@ -51,9 +55,7 @@ echo -n "Configuring the permission: "
 chmod -R 775 /app && chown -R expense:expense /app 
 stat $?
 
-echo -n "Configuring the system services: "
-cp $component.service /etc/systemd/system/$component.service
-stat $?
+
 
 
 
