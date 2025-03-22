@@ -1,10 +1,10 @@
 #!/bin/bash
-echo "Installing nginx: "
+echo -n "Installing nginx: "
 dnf install nginx -y  &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then
-    echo "Success"
+    echo -e "\e[32m Success \e[0m"
     else
-        echo "Failed"
+        echo -e "\e[31m Failed \e[0m"
 fi
 echo "Enable nginx: "
 systemctl enable nginx &>> /tmp/frontend.log
