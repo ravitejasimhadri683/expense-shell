@@ -6,19 +6,19 @@ if [ $? -eq 0 ]; then
     else
         echo -e "\e[31m Failed \e[0m"
 fi
-echo "Enable nginx: "
+echo -n "Enable nginx: "
 systemctl enable nginx &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then
-    echo "Success"
+    echo -e "\e[32m Success \e[0m"
     else
-        echo "Failed"
+        echo -e "\e[31m Failed \e[0m"
 fi
 echo "starting nginx: "
 systemctl start nginx  &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then
-    echo "Success"
+    echo -e "\e[32m Success \e[0m"
     else
-        echo "Failed"
+        echo -e "\e[31m Failed \e[0m"
 fi
 # rm -rf /usr/share/nginx/html/*  
 # curl -o /tmp/frontend.zip https://expense-web-app.s3.amazonaws.com/frontend.zip
