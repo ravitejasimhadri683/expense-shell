@@ -39,7 +39,11 @@ stat $?
 
 cd /usr/share/nginx/html 
 unzip /tmp/$component.zip &>> logfile
+
+echo -n "Configuring Proxy"
 cp expense.conf /etc/nginx/default.d/expense.conf  &>> logfile
+stat $?
+
 # vim /etc/nginx/default.d/expense.conf   ( empty the file if any and add the below content )
 
 echo -n "Resarting nginx: "
