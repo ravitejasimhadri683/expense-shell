@@ -1,6 +1,4 @@
 #!/bin/bash
-component="frontend"
-logfile= "/tmp/frontend.log"
 # Check if the script is being run as root (UID 0)
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
@@ -10,6 +8,8 @@ logfile= "/tmp/frontend.log"
        echo -e "\n For example: \n\t run as \e[35m sudo bash $0 \e[0m"
        exit 1  
    fi
+component="frontend"
+logfile= "/tmp/frontend.log"
 stat(){
     if [ $1 -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
