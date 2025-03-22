@@ -28,9 +28,9 @@ echo -n "Creating application User"
 id $appUser &>> logfile
 if [$? -eq 0] then
     echo -e "\e[32m User is already exist...so, SKIPPING it \e[0m"
-    else   
-        echo -e "\e[32m adding new user \e[0m"
-        useradd $appUser
-        stat $?
+else   
+    echo -e "\e[32m adding new user \e[0m"
+    useradd $appUser
+    stat $?
 fi
 echo "out of the if block"
