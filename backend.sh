@@ -24,9 +24,9 @@ dnf module enable nodejs:20 -y &>> logfile
 dnf install nodejs -y &>> logfile
 stat $?
 
-echo -n "Creating application User"
+echo -n "Creating application User : "
 id $appUser 
-if [$? -eq 0];then
+if [ $? -eq 0 ];then
     echo -e "\e[32m User is already exist...so, SKIPPING it \e[0m"
 else   
     useradd $appUser
