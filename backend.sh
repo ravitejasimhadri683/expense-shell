@@ -9,6 +9,7 @@
        exit 1  
    fi
 component="backend"
+appUser="expense"
 logfile= "/tmp/$component.log"
 stat(){
     if [ $1 -eq 0 ]; then
@@ -23,3 +24,6 @@ dnf module enable nodejs:20 -y &>> logfile
 dnf install nodejs -y &>> logfile
 stat $?
 
+echo -n "Creating application User"
+useradd $appUser
+stat $?
