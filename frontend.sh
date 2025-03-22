@@ -35,7 +35,7 @@ if [ $? -eq 0 ]; then
         echo -e "\e[31m Failed \e[0m"
 fi
 cd /usr/share/nginx/html 
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>> /tmp/frontend.log
 # vim /etc/nginx/default.d/expense.conf   ( empty the file if any and add the below content )
 
 # proxy_http_version 1.1;
