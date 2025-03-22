@@ -13,32 +13,20 @@ stat $?
 
 echo -n "Enable nginx: "
 systemctl enable nginx &>> /tmp/$component.log
-if [ $? -eq 0 ]; then
-    echo -e "\e[32m Success \e[0m"
-    else
-        echo -e "\e[31m Failed \e[0m"
-fi
+stat $?
+
 echo -n "starting nginx: "
 systemctl start nginx  &>> /tmp/$component.log
-if [ $? -eq 0 ]; then
-    echo -e "\e[32m Success \e[0m"
-    else
-        echo -e "\e[31m Failed \e[0m"
-fi
+stat $?
+
 echo -n "Remove old content from $component" 
 rm -rf /usr/share/nginx/html/*  
-if [ $? -eq 0 ]; then
-    echo -e "\e[32m Success \e[0m"
-    else
-        echo -e "\e[31m Failed \e[0m"
-fi
+stat $?
+
 echo -n "Downloading $component content:"
 curl -o /tmp/$component.zip https://expense-web-app.s3.amazonaws.com/frontend.zip &>> /tmp/$component.log
-if [ $? -eq 0 ]; then
-    echo -e "\e[32m Success \e[0m"
-    else
-        echo -e "\e[31m Failed \e[0m"
-fi
+stat $?
+
 cd /usr/share/nginx/html 
 unzip /tmp/$component.zip &>> /tmp/$component.log
 cp expense.conf /etc/nginx/default.d/expense.conf  &>> /tmp/fron$component.log
@@ -46,9 +34,5 @@ cp expense.conf /etc/nginx/default.d/expense.conf  &>> /tmp/fron$component.log
 
 echo -n "Resarting nginx: "
 systemctl restart nginx 
-if [ $? -eq 0 ]; then
-    echo -e "\e[32m Success \e[0m"
-    else
-        echo -e "\e[31m Failed \e[0m"
-fi
+stat $?
 # systemctl status nginx 
