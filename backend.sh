@@ -38,8 +38,9 @@ echo -n "Download the application to create the app directory: "
 curl -o /tmp/backend.zip https://expense-web-app.s3.amazonaws.com/$component.zip  &>> logfile
 stat $?
 
+echo -n "Extracting the $component content "
 cd /app
-unzip /tmp/backend.zip &>> logfile
+unzip -o /tmp/backend.zip &>> logfile
 stat $?
 
 
