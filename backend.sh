@@ -29,7 +29,17 @@ id $appUser
 if [ $? -eq 0 ];then
     echo -e "\e[32m User is already exist...so, SKIPPING it \e[0m"
 else   
-    useradd $appUser
+    useradd $appUser &>> logfile
     stat $?
 fi
-echo "out of the if block"
+mkdir /app &>> logfile
+
+echo -n "Download the application to create the app directory: "
+curl -o /tmp/backend.zip https://expense-web-app.s3.amazonaws.com/$component.zip  &>> logfile
+stat $?
+
+cd /app
+
+unzip /tmp/backend.zip &>> logfile
+
+
