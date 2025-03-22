@@ -55,6 +55,19 @@ echo -n "Configuring the permission: "
 chmod -R 775 /app && chown -R expense:expense /app 
 stat $?
 
+echo -n "Installing mysql: "
+dnf install mysql-server -y  &>> logfile
+stat $?
+
+echo -n "Injecting schema from backend app"
+mysql -h 172.31.13.88 -uroot -pExpenseApp@1 < /app/schema/backend.sql 
+
+
+echo -n "start the backend service: "
+systemctl daemon-reload &>> logfile
+systemctl enable backend   &>> logfile
+systemctl start backend   &>> logfile
+stat $?
 
 
 
