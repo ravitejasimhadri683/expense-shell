@@ -1,12 +1,16 @@
 #!/bin/bash
 component="frontend"
-echo -n "Installing nginx: "
-dnf install nginx -y  &>> /tmp/$component.log
-if [ $? -eq 0 ]; then
+stat(){
+    if [ $1 -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
     else
         echo -e "\e[31m Failed \e[0m"
 fi
+}
+echo -n "Installing nginx: "
+dnf install nginx -y  &>> /tmp/$component.log
+stat $?
+
 echo -n "Enable nginx: "
 systemctl enable nginx &>> /tmp/$component.log
 if [ $? -eq 0 ]; then
