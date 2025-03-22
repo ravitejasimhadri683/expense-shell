@@ -27,7 +27,7 @@ systemctl start  mysqld  &>> logfile
 stat $?
 
 echo -n "setup the password for mysql: "
-mysql_secure_installation --set-root-pass ExpenseApp@1
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>> logfile
 stat $?
 
 
