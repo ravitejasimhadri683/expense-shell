@@ -46,7 +46,7 @@ unzip /tmp/frontend.zip &>> /tmp/frontend.log
 # stub_status on;
 # access_log off;
 # }
-
+echo -n "Resarting nginx: "
 systemctl restart nginx 
 if [ $? -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
