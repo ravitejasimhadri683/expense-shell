@@ -35,6 +35,7 @@ stat $?
 
 echo -n "Downloading $component content:"
 curl -o /tmp/$component.zip https://expense-web-app.s3.amazonaws.com/frontend.zip &>> logfile
+stat $?
 
 cd /usr/share/nginx/html 
 unzip /tmp/$component.zip &>> logfile
