@@ -36,16 +36,9 @@ if [ $? -eq 0 ]; then
 fi
 cd /usr/share/nginx/html 
 unzip /tmp/frontend.zip &>> /tmp/frontend.log
+cp expense.conf /etc/nginx/default.d/expense.conf  &>> /tmp/frontend.log
 # vim /etc/nginx/default.d/expense.conf   ( empty the file if any and add the below content )
 
-# proxy_http_version 1.1;
-
-# location /api/ { proxy_pass http://localhost:8080/; }
-
-# location /health {
-# stub_status on;
-# access_log off;
-# }
 echo -n "Resarting nginx: "
 systemctl restart nginx 
 if [ $? -eq 0 ]; then
