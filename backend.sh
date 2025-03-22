@@ -25,8 +25,8 @@ dnf install nodejs -y &>> logfile
 stat $?
 
 echo -n "Creating application User"
-id $appUser &>> logfile
-if [$? -eq 0]; then
+id $appUser 
+if [$? -eq 0];then
     echo -e "\e[32m User is already exist...so, SKIPPING it \e[0m"
 else   
     useradd $appUser
