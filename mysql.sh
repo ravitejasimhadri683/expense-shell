@@ -8,6 +8,13 @@
        echo -e "\n For example: \n\t run as \e[35m sudo bash $0 \e[0m"
        exit 1  
    fi
+
+   if [ -z $1 ]; then
+       echo -e "\e[31m Please provide the password for mysql \e[0m"
+       echo -e "\e[32m provide the sudo bash $0 password \e[0m"
+       exit 2
+   fi
+
 component="mysql"
 logfile= "/tmp/$component.log"
 stat(){
