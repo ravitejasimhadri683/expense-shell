@@ -16,7 +16,7 @@
    fi
 
 component="mysql"
-logfile= "/tmp/$component.log"
+logfile= "/tmp/$component.log" &>> logfile
 stat(){
     if [ $1 -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
