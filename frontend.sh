@@ -17,7 +17,7 @@ stat(){
         echo -e "\e[31m Failed \e[0m"
 fi
 }
-logfile= "/tmp/$component.log"
+logfile= /tmp/$component.log
 
 echo -n "Installing nginx: "
 dnf install nginx -y  &>> $logfile
