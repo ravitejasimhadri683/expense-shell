@@ -1,15 +1,6 @@
 #!/bin/bash
 component=mysql
-logfile=/tmp/$component.log
-# Check if the script is being run as root (UID 0)
-   if [ "$(id -u)" -eq "0" ]; then
-       echo "Running as root..."
-
-   else
-       echo "Not running as root. Exiting..."
-       echo -e "\n For example: \n\t run as \e[35m sudo bash $0 \e[0m"
-       exit 1  
-   fi
+source=common.sh
 
    if [ -z $1 ]; then
        echo -e "\e[31m Please provide the password for mysql \e[0m"
