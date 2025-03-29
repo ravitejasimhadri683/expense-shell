@@ -1,6 +1,6 @@
 #!/bin/bash
 component=mysql
-source=common.sh
+source common.sh
 
    if [ -z $1 ]; then
        echo -e "\e[31m Please provide the password for mysql \e[0m"
