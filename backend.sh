@@ -2,7 +2,7 @@
 # Check if the script is being run as root (UID 0)
 component="backend"
 appUser="expense"
-$rootPass="ExpenseApp@1"
+$rootPass=$1
 logfile= "/tmp/$component.log" &>> logfile
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
@@ -14,7 +14,7 @@ logfile= "/tmp/$component.log" &>> logfile
    fi
 
    if [ -z $1 ]; then
-       echo -e "\e[31m Please provide the password for mysql \e[0m"
+       echo -e "\e[31m Please provide the password for mysql root user\e[0m"
        echo -e "\e[35m \t\t For Example: sudo bash $0 password \e[0m"
        exit 2
    fi
