@@ -60,7 +60,7 @@ dnf install mysql-server -y  &>> logfile
 stat $?
 
 echo -n "Injecting schema from backend app"
-mysql -h 172.31.13.88 -uroot -pExpenseApp@1 < /app/schema/backend.sql 
+mysql -h  mysql.cloud-apps-learn.site -uroot -pExpenseApp@1 < /app/schema/backend.sql 
 
 
 echo -n "start the backend service: "
