@@ -10,3 +10,11 @@ logfile=/tmp/$component.log
        echo -e "\n For example: \n\t run as \e[35m sudo bash $0 \e[0m"
        exit 1  
    fi
+   
+stat(){
+    if [ $1 -eq 0 ]; then
+    echo -e "\e[32m Success \e[0m"
+    else
+        echo -e "\e[31m Failed \e[0m"
+fi
+}
