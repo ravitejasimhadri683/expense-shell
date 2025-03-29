@@ -1,4 +1,6 @@
 #!/bin/bash
+component="mysql"
+logfile= "/tmp/$component.log" &>> logfile
 # Check if the script is being run as root (UID 0)
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
@@ -15,8 +17,7 @@
        exit 2
    fi
 
-component="mysql"
-logfile= "/tmp/$component.log" &>> logfile
+
 stat(){
     if [ $1 -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
