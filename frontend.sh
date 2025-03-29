@@ -1,6 +1,6 @@
 #!/bin/bash
 component=frontend
-logfile= "/tmp/$component.log"
+logfile= /tmp/$component.log
 # Check if the script is being run as root (UID 0)
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
