@@ -2,7 +2,7 @@
 # Check if the script is being run as root (UID 0)
 component="backend"
 appUser="expense"
-$rootpass="ExpenseApp@1"
+$rootPass="ExpenseApp@1"
 logfile= "/tmp/$component.log" &>> logfile
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
@@ -68,7 +68,7 @@ dnf install mysql-server -y  &>> logfile
 stat $?
 
 echo -n "Injecting schema from backend app"
-mysql -h  mysql.cloud-apps-learn.site -uroot -p$rootpass < /app/schema/backend.sql 
+mysql -h  mysql.cloud-apps-learn.site -uroot -p$rootPass < /app/schema/backend.sql 
 
 
 echo -n "start the backend service: "
