@@ -1,6 +1,6 @@
 #!/bin/bash
 component=frontend
-logfile= /tmp/$component.log
+logfile= "/tmp/$component.log"
 # Check if the script is being run as root (UID 0)
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
@@ -19,7 +19,7 @@ stat(){
 fi
 }
 echo -n "Installing nginx: "
-dnf install nginx -y  &>> logfile
+dnf install nginx -y  &>> /tmp/frontend.log
 stat $?
 
 echo -n "Configuring Proxy"
