@@ -1,5 +1,5 @@
 #!/bin/bash
-# Check if the script is being run as root (UID 0)
+# Check if the script is being run as root (UID 0) 
 component=backend
 appUser="expense"
 rootPass=$1
