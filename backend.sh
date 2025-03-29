@@ -69,6 +69,7 @@ stat $?
 
 echo -n "Injecting schema from backend app"
 mysql -h  mysql.cloud-apps-learn.site -uroot -p$rootPass < /app/schema/backend.sql 
+stat $?
 
 
 echo -n "start the backend service: "
