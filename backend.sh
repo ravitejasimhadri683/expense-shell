@@ -1,5 +1,9 @@
 #!/bin/bash
 # Check if the script is being run as root (UID 0)
+component="backend"
+appUser="expense"
+$rootpass="ExpenseApp@1"
+logfile= "/tmp/$component.log" &>> logfile
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
 
@@ -8,9 +12,13 @@
        echo -e "\n For example: \n\t run as \e[35m sudo bash $0 \e[0m"
        exit 1  
    fi
-component="backend"
-appUser="expense"
-logfile= "/tmp/$component.log" &>> logfile
+
+   if [ -z $1 ]; then
+       echo -e "\e[31m Please provide the password for mysql \e[0m"
+       echo -e "\e[35m \t\t For Example: sudo bash $0 password \e[0m"
+       exit 2
+   fi
+
 stat(){
     if [ $1 -eq 0 ]; then
     echo -e "\e[32m Success \e[0m"
@@ -60,7 +68,7 @@ dnf install mysql-server -y  &>> logfile
 stat $?
 
 echo -n "Injecting schema from backend app"
-mysql -h  mysql.cloud-apps-learn.site -uroot -pExpenseApp@1 < /app/schema/backend.sql 
+mysql -h  mysql.cloud-apps-learn.site -uroot -p$rootpass < /app/schema/backend.sql 
 
 
 echo -n "start the backend service: "
