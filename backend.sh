@@ -3,7 +3,7 @@
 component=backend
 appUser="expense"
 rootPass=$1
-source=common.sh
+source=common.sh 
 
    if [ -z $1 ]; then
        echo -e "\e[31m Please provide the password for mysql root user\e[0m"
