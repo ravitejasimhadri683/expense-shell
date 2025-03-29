@@ -27,23 +27,23 @@ stat(){
 fi
 }
 echo -n "Installing node js: "
-dnf dnf module disable nodejs -y  &>> logfile
-dnf module enable nodejs:20 -y &>> logfile
-dnf install nodejs -y &>> logfile
+dnf dnf module disable nodejs -y  &>> $logfile
+dnf module enable nodejs:20 -y &>> $logfile
+dnf install nodejs -y &>> $logfile
 stat $?
 
 echo -n "Creating application User : "
-id $appUser &>> logfile
+id $appUser &>> $logfile
 if [ $? -eq 0 ];then
     echo -e "\e[32m User is already exist...so, SKIPPING it \e[0m"
 else   
-    useradd $appUser &>> logfile
+    useradd $appUser &>> $logfile
     stat $?
 fi
-mkdir /app &>> logfile
+mkdir /app &>> $logfile
 
 echo -n "Download the application to create the app directory: "
-curl -o /tmp/backend.zip https://expense-web-app.s3.amazonaws.com/$component.zip  &>> logfile
+curl -o /tmp/backend.zip https://expense-web-app.s3.amazonaws.com/$component.zip  &>> $logfile
 stat $?
 
 echo -n "Configuring the system services: "
@@ -52,11 +52,11 @@ stat $?
 
 echo -n "Extracting the $component content "
 cd /app
-unzip -o /tmp/backend.zip &>> logfile
+unzip -o /tmp/backend.zip &>> $logfile
 stat $?
 
 echo -n "Generating the $component artifacts: "
-npm install &>> logfile
+npm install &>> $logfile
 stat $?
 
 echo -n "Configuring the permission: "
@@ -64,7 +64,7 @@ chmod -R 775 /app && chown -R expense:expense /app
 stat $?
 
 echo -n "Installing mysql: "
-dnf install mysql-server -y  &>> logfile
+dnf install mysql-server -y &>> $logfile
 stat $?
 
 echo -n "Injecting schema from backend app"
@@ -73,9 +73,9 @@ stat $?
 
 
 echo -n "start the backend service: "
-systemctl daemon-reload &>> logfile
-systemctl enable backend   &>> logfile
-systemctl start backend   &>> logfile
+systemctl daemon-reload &>> $logfile
+systemctl enable backend   &>> $logfile
+systemctl start backend   &>> $logfile
 stat $?
 
 
