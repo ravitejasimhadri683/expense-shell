@@ -3,7 +3,7 @@
 component=backend
 appUser="expense"
 rootPass=$1
-logfile= "/tmp/$component.log" &>> logfile
+logfile= "/tmp/$component.log"
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
 
