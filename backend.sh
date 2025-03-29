@@ -2,7 +2,7 @@
 # Check if the script is being run as root (UID 0)
 component="backend"
 appUser="expense"
-$rootPass=$1
+rootPass=$1
 logfile= "/tmp/$component.log" &>> logfile
    if [ "$(id -u)" -eq "0" ]; then
        echo "Running as root..."
