@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check if the script is being run as root (UID 0)
-component="backend"
+component=backend
 appUser="expense"
 rootPass=$1
 logfile= "/tmp/$component.log" &>> logfile

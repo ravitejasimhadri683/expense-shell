@@ -1,5 +1,5 @@
 #!/bin/bash
-component="mysql"
+component=mysql
 logfile= "/tmp/$component.log" &>> logfile
 # Check if the script is being run as root (UID 0)
    if [ "$(id -u)" -eq "0" ]; then
